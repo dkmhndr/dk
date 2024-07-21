@@ -9,6 +9,7 @@ export type SpotifyCardProps = {
   url?: string;
   isNowPlaying?: boolean;
   key?: any;
+  newTab?: boolean;
 };
 export default function Card({
   albumImageURL,
@@ -19,12 +20,13 @@ export default function Card({
   url,
   isNowPlaying,
   key,
+  newTab=true,
 }: SpotifyCardProps) {
   return (
     <Link
       href={url ?? 'https://open.spotify.com'}
-      rel='noopener noreferrer'
-      target='_blank'
+      rel={newTab ? 'noopener noreferrer' : undefined}
+      target={newTab ? '_blank' : undefined}
     >
       <div
         className={`bg-base ring-content group mb-1 flex max-h-32 flex-row ring-2 ${

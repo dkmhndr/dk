@@ -1,5 +1,8 @@
+import {fab} from "@fortawesome/free-brands-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from "next/link";
+import React from "react";
 
 import ArrowLink from "@/components/links/ArrowLink";
 
@@ -7,10 +10,11 @@ import ArrowLink from "@/components/links/ArrowLink";
 export type AjarwicaraHeaderProps = {
     title: string;
     img?: string;
-    postDate?: string;
-    minRead?: number;
+    releaseDate?: string;
     shorts?: string;
-    tags?: string[];
+    spotify?: string;
+    appleMusic?: string;
+    youtube?: string;
     links?: [
         {
             href: string;
@@ -19,13 +23,14 @@ export type AjarwicaraHeaderProps = {
         }
     ]
 };
-export default function AjarwicaraHeader({
+export default function SongHeader({
                                              title,
                                              img,
-                                             postDate,
-                                             minRead,
+                                             releaseDate,
                                              shorts,
-                                             tags,
+    spotify,
+    appleMusic,
+    youtube,
                                              links
                                          }: AjarwicaraHeaderProps) {
     return (
@@ -36,11 +41,31 @@ export default function AjarwicaraHeader({
                         {title}
                     </h1>
                     <p className='mt-2 text-base text-white drop-shadow-lg md:mt-4  md:text-xs'>
-                        {postDate} - {minRead} Min. Read
+                        {releaseDate}
                     </p>
                     <p className='mt-2 line-clamp-1 text-base text-white drop-shadow-lg  md:mt-4 md:text-sm'>
                         {shorts}
                     </p>
+                    <div className="flex gap-3 text-white text-xl my-4">
+                        <Link
+                            className='hover:text-primary-500 transition-colors duration-300'
+                            href={`${youtube}`}
+                        >
+                            <FontAwesomeIcon icon={fab.faYoutube}></FontAwesomeIcon>
+                        </Link>
+                        <Link
+                            className='hover:text-primary-500 transition-colors duration-300'
+                            href={`${spotify}`}
+                        >
+                            <FontAwesomeIcon icon={fab.faSpotify}></FontAwesomeIcon>
+                        </Link>
+                        <Link
+                            className='hover:text-primary-500 transition-colors duration-300'
+                            href={`${appleMusic}`}
+                        >
+                            <FontAwesomeIcon icon={fab.faApple}></FontAwesomeIcon>
+                        </Link>
+                    </div>
                 </div>
                 {img &&
                     <div className='bg-primary-500 rounded-lg'>
@@ -64,28 +89,37 @@ export default function AjarwicaraHeader({
                             {title}
                         </h1>
                         <p className='text-content mt-2 drop-shadow-lg text-sm'>
-                            {postDate} - {minRead} Min. Read
+                            {releaseDate}
                         </p>
                         <p className='mt-2 line-clamp-3 text-base text-gray-700 dark:text-gray-300 drop-shadow-lg  text-md'>
                             {shorts}
                         </p>
+                        <div className="flex gap-3 text-4xl my-4">
+                            <Link
+                                className='hover:text-primary-500 transition-colors duration-300'
+                                href={`${youtube}`}
+                            >
+                                <FontAwesomeIcon icon={fab.faYoutube}></FontAwesomeIcon>
+                            </Link>
+                            <Link
+                                className='hover:text-primary-500 transition-colors duration-300'
+                                href={`${spotify}`}
+                            >
+                                <FontAwesomeIcon icon={fab.faSpotify}></FontAwesomeIcon>
+                            </Link>
+                            <Link
+                                className='hover:text-primary-500 transition-colors duration-300'
+                                href={`${appleMusic}`}
+                            >
+                                <FontAwesomeIcon icon={fab.faApple}></FontAwesomeIcon>
+                            </Link>
+                        </div>
                     </div>
                     <div>
-                        {tags && !!tags.length && <div className='py-8'>
-                            <p>Tags</p>
-                            <div className='h-0.5 w-full bg-gray-200 mt-2 mb-4'></div>
-                            <div className="flex gap-3 justify-evenly">
-                                {tags.map((tag) => (
-                                    <Link key={tag} href={`/ajarwicara/tag/${tag}`}
-                                          className='text-sm text-black dark:text-white hover:font-bold transition-all duration-300 rounded-full'>
-                                        ◎ {tag}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>}
                         <div className="flex flex-col gap-8">
                             {links && links.map((link) => (
-                                <ArrowLink key={link.href} href={`/ajarwicara/${link.href}`} direction={link.direction} className="main-box p-4 md:mr-auto hover:bg-primary hover:shadow-xlHover min-w-full justify-end transition-all">
+                                <ArrowLink key={link.href} href={`/song/${link.href}`} direction={link.direction}
+                                           className="main-box p-4 md:mr-auto hover:bg-primary hover:shadow-xlHover min-w-full justify-end transition-all">
                                     {link.text}
                                 </ArrowLink>
                             ))}

@@ -31,3 +31,34 @@ export async function getPostBySlug(slug: string) {
   });
   return entries.items[0];
 }
+
+export async function getPostByTag(tag: string) {
+  // @ts-ignore
+  const entries = await client.getEntries({
+    content_type: 'ajarwicara',
+    'metadata.tags.sys.id[in]': tag,
+    order: ['-sys.createdAt'],
+  });
+  return entries.items;
+}
+
+export async function getAllSongs() {
+  // @ts-ignore
+  const entries = await client.getEntries({
+    content_type: 'discography',
+    order: ['-sys.createdAt'],
+  });
+  return entries.items;
+}
+
+export async function getSongBySlug(slug: string) {
+  const entries = await client.getEntries({
+    content_type: 'discography',
+    'fields.slug': slug,
+  });
+  return entries.items[0];
+}
+
+export async function getAbout() {
+  return await client.getEntry("5pI4xoVOFQ1jrblGoRGlWy");
+}

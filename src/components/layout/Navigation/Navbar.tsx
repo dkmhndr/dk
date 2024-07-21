@@ -13,18 +13,18 @@ export default function Navbar() {
       name: '/dk',
       href: '/',
     },
-    // {
-    //   name: '/ajarwicara',
-    //   href: '/ajarwicara',
-    // },
-    // {
-    //   name: '/song',
-    //   href: '/song',
-    // },
-    // {
-    //   name: '/about',
-    //   href: '/about',
-    // },
+    {
+      name: '/ajarwicara',
+      href: '/ajarwicara',
+    },
+    {
+      name: '/song',
+      href: '/song',
+    },
+    {
+      name: '/about',
+      href: '/about',
+    },
   ];
   const currentLink = links.filter((link) => link.href === pathName)[0] ?? {};
   const restLinks = links.filter((link) => link.href !== pathName) ?? [];

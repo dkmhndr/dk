@@ -1,7 +1,9 @@
+import { config } from "@fortawesome/fontawesome-svg-core";
 import type { Metadata, Viewport } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import React from 'react';
 
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import '../styles/globals.css';
 
 import { generateSeoMeta } from '@/lib/seo';
@@ -9,6 +11,7 @@ import { generateSeoMeta } from '@/lib/seo';
 import Navbar from '@/components/layout/Navigation/Navbar';
 import PrelineScript from '@/components/PrelineScript';
 import { ThemeProvider } from '@/components/provider';
+
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
 export const generateMetadata = async (): Promise<Metadata> =>
@@ -29,6 +32,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  config.autoAddCss = false;
   return (
     <html lang='en'>
       <head />

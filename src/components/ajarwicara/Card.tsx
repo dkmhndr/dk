@@ -31,13 +31,13 @@ export default function Card({
           alt='img'
         />
       </div>
-      <div className='flex flex-1 flex-col justify-evenly gap-2 p-4'>
+      <div className='flex flex-1 flex-col h-full justify-evenly gap-2 p-4'>
         <h2 className='card-title group-hover:text-primary-content line-clamp-2 flex-1 text-start text-lg font-bold'>
           {title}
         </h2>
         <div className='grid grid-cols-2 pb-0 text-justify text-xs text-opacity-50 group-hover:text-opacity-100 md:text-sm'>
-          <div className='w-fit font-medium'>{date}</div>
-          <div className='text-end'>{minRead} Min Read</div>
+          {date && <div className='w-fit font-medium'>{date}</div>}
+          {minRead && <div className='text-end'>{minRead} Min Read</div>}
         </div>
         <p className='md:text-md line-clamp-1 text-justify text-sm italic'>
           {desc}

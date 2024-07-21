@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   LatestPosts,
-  LatestPostsSkeleton,
 } from '@/components/ajarwicara/LatestPosts';
 import Section from '@/components/home/Section';
 
@@ -14,7 +13,7 @@ export default async function AjarWicaraSection() {
       icon='✍️'
       isScrollable={true}
     >
-      <React.Suspense fallback={<LatestPostsSkeleton />}>
+      <React.Suspense>
         <LatestPosts />
       </React.Suspense>
     </Section>

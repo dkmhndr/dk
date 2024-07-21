@@ -27,7 +27,7 @@ const renderNode = {
           </audio>
         );
       default:
-        return <img src={file.url} alt={title} title={description} />;
+        return <img src={file.url} alt={title} title={description}/>;
     }
   },
   [BLOCKS.EMBEDDED_ENTRY]: (node: any) => {
@@ -39,7 +39,7 @@ const renderNode = {
             {skillset.items.map((item: any, index: number) => (
               <div
                 key={index}
-                className='bg-base-100 w-full pb-8 md:p-4 md:shadow-xl'
+                className='bg-base-100 w-full pb-8'
               >
                 <div className='main-box h-full p-6'>
                   <h4 className='text-2xl font-bold'>{item.title}</h4>
