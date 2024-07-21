@@ -27,16 +27,6 @@ export default async function SkillSection() {
             title: "Backend",
             skills: [
                 "Laravel",
-                "Spring Boot",
-                "NestJS",
-                "ExpressJS",
-                "Gin"
-            ]
-        },
-        {
-            title: "Databases",
-            skills: [
-                "Laravel",
                 "Springboot",
                 "JPOS",
                 "MySQL",
@@ -67,7 +57,7 @@ export default async function SkillSection() {
               </div>
           </div>
               <div className='main-box min-h-full w-full align-middle uppercase bg-base flex flex-col justify-between p-4 gap-4'>
-                    <div className="flex flex-wrap gap-4 justify-evenly items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
                         {skillsets.map((skillset) => (
                             <div className="flex flex-col gap-4 text-start" key={skillset.title}>
                                 <h1 className="text-2xl font-bold">{skillset.title}</h1>

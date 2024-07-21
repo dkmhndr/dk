@@ -21,7 +21,7 @@ export default function AnimationHero({
   return (
     <div className='main-box h-full min-h-96 w-full overflow-clip p-8 flex flex-col justify-between'>
       <div>
-          <div className='flex items-center justify-start gap-4'>
+          <div className='flex flex-wrap items-center justify-start gap-2'>
               {img && <Image src={img} alt='Img' className='w-24 h-24 rounded-full hover:scale-105 transition-all duration-300 ease-in-out' width={96} height={96} />}
               <Title title={title} />
           </div>

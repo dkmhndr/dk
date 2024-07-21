@@ -48,10 +48,10 @@ export default async function EducationSection() {
                           </h1>
                       </div>
                       <div className="flex flex-col h-full justify-evenly gap-2 border-t-2 border-dotted border-gray-500 pt-2">
-                          <p className="md:text-md line-clamp-1 text-end text-md font-semibold">
+                          <p className="md:text-md text-end text-md font-semibold">
                               {education.date}
                           </p>
-                          <p className="md:text-md line-clamp-1 text-end text-sm italic">
+                          <p className="md:text-md text-end text-sm italic">
                               {education.desc}
                           </p>
                       </div>

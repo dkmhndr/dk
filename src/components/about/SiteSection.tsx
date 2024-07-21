@@ -7,7 +7,7 @@ import UnderlineLink from "@/components/links/UnderlineLink";
 export default async function SiteSection() {
     return (
         <div
-            className="main-box w-full items-center text-center gap-8 p-8"
+            className="main-box w-full items-center text-center gap-8 py-8"
         >
             &copy; {moment().format('YYYY')} Dika Mahendra v4.0. All rights reserved.<br/>
             Rewrited in <UnderlineLink href="https://nextjs.org/" target="_blank">NextJS</UnderlineLink>. UI by <UnderlineLink href="https://tailwindcss.com/" target="_blank">TailwindCSS</UnderlineLink> and <UnderlineLink href="https://preline.co/" target="_blank">Preline UI</UnderlineLink>.<br/>
