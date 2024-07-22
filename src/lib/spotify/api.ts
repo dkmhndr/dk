@@ -71,6 +71,8 @@ export const fetchNowPlaying = async () => {
   }
 };
 
+export type TopTracksResponse = Awaited<ReturnType<typeof fetchTopTracks>>;
+
 export const fetchTopTracks = async () => {
   try {
     const { access_token } = await getAccessToken();
