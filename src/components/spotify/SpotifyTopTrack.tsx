@@ -5,10 +5,10 @@ import Card from '@/components/spotify/Card';
 export const SpotifyTopTrack = async () => {
   const topTracks = await fetchTopTracks();
 
-  // refetch every minutes
+  // refetch every 10 seconds
   setTimeout(() => {
     SpotifyTopTrack();
-  }, 60000);
+  }, 10000);
 
   if (!topTracks) return null;
   return (
