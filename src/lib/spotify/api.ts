@@ -79,13 +79,15 @@ export const fetchTopTracks = async () => {
         Authorization: `Bearer ${access_token}`,
       },
       cache: 'no-store',
+    }).then((res) => {
+      return res;
     });
 
     const { items }: SpotifyTopTracks = await response.json();
-    return items.map((track) => ({
-      albumImageUrl: track.album.images[0].url,
+    return items && items.map((track) => ({
+      albumImageUrl: track.album.images[0].url || '',
       album: track.album,
-      artist: track.artists.map((_artist) => _artist.name).join(', '),
+      artist: track.artists.map((a) => a.name).join(', '),
       songUrl: track.external_urls.spotify,
       title: track.name,
       id: track.id,
