@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <div>
               <div className="flex flex-col gap-8">
                 {links && links.map((link) => (
-                    <ArrowLink key={link.href} href={`/ajarwicara/${link.href}`} direction={link.direction}
+                    <ArrowLink key={link.href} href={`/song/${link.href}`} direction={link.direction}
                                className="main-box p-4 md:mr-auto hover:bg-primary hover:shadow-xlHover min-w-full justify-end transition-all">
                       {link.text}
                     </ArrowLink>

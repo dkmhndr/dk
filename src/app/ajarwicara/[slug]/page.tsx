@@ -10,6 +10,7 @@ import AjarwicaraHeader from '@/components/ajarwicara/post/AjarwicaraHeader';
 import ArrowLink from "@/components/links/ArrowLink";
 import PageTransition from '@/components/PageTransition';
 import RichTextRenderer from '@/components/RichTextRenderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts({ order: 'desc', limit: 1000 });
@@ -69,7 +70,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!post) return null;
   const postDate = moment(post.sys.createdAt).format('DD MMMM YYYY');
   const richText = post.fields.body as Document;
-  const minRead = Math.ceil(richText.content.length / 200);
+  const countWords = richText.content.reduce((acc, cur) => {
+    if (cur.nodeType === 'paragraph') {
+      return acc + cur.content.reduce((a, c) => {
+        if (c.nodeType === 'text') {
+          return a + c.value.split(' ').length;
+        }
+        return a;
+      }, 0);
+    }
+    return acc;
+  }, 0);
+  const minRead = Math.ceil(countWords / 200);
   // @ts-ignore
   const img = post.fields.thumbnail ? `https:${post.fields.thumbnail.fields?.file.url || ''}` : 'https://via.placeholder.com/1920x1080';
 	const tags = post.metadata.tags && post.metadata.tags.map((tag) => tag.sys.id);

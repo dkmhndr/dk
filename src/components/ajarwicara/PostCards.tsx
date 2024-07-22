@@ -8,7 +8,18 @@ const PostCards = ({ entries }: { entries: any }) => {
         <>
             {entries.map((entry: any) => {
                 const richText = entry.fields.body as Document;
-                const minRead = Math.ceil(richText.content.length / 200);
+                const countWords = richText.content.reduce((acc, cur) => {
+                  if (cur.nodeType === 'paragraph') {
+                    return acc + cur.content.reduce((a, c) => {
+                      if (c.nodeType === 'text') {
+                        return a + c.value.split(' ').length;
+                      }
+                      return a;
+                    }, 0);
+                  }
+                  return acc;
+                }, 0);
+                const minRead = Math.ceil(countWords / 200);
                 return(
                     <div key={entry.sys.slug} className="lg:min-h-lg">
                     <Link href={`/ajarwicara/${entry.fields.slug}`}>
