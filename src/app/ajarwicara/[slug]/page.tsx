@@ -26,11 +26,9 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPostBySlug(params.slug);
+  const post: any = await getPostBySlug(params.slug);
   if (!post) return {};
   const postUrl = new URL(env.url.website + '/ajarwicara/' + params.slug);
-  // @ts-ignore
-  const imageUrl = new URL(`${env.url.website}${post?.fields?.thumbnail?.fields.file.url || ''}`);
   return {
     ...generateSeoMeta({
       title: post.fields.title as string,
@@ -48,11 +46,7 @@ export async function generateMetadata({
         siteName: 'Dika Mahendra',
         images: [
           {
-            url: `/og/content?title=${encodeURIComponent(
-              post.fields.title as string
-            )}&link=${encodeURIComponent(
-              postUrl.toString()
-            )}&image=${encodeURIComponent(imageUrl.toString())}`,
+            url: `https:${post.fields.thumbnail.fields.file.url}`,
             width: 1200,
             height: 630,
             alt: post.fields.title as string,

@@ -13,7 +13,6 @@ import PageTransition from '@/components/PageTransition';
 export async function generateMetadata() {
     const postUrl = new URL(env.url.website + '/about');
     // @ts-ignore
-    const imageUrl = new URL(`https://images.ctfassets.net/nkv8ctcqvvb5/2glfSVWIce4tP00YSHlGsz/bf9a83120482501a33a0115ebf83a068/avatar.jpg`);
     return {
         ...generateSeoMeta({
             title: "Dika Mahendra",
@@ -29,11 +28,7 @@ export async function generateMetadata() {
                 siteName: 'Dika Mahendra',
                 images: [
                     {
-                        url: `/og/content?title=${encodeURIComponent(
-                            "Dika Mahendra"
-                        )}&link=${encodeURIComponent(
-                            postUrl.toString()
-                        )}&image=${encodeURIComponent(imageUrl.toString())}`,
+                        url: "https://images.ctfassets.net/nkv8ctcqvvb5/2glfSVWIce4tP00YSHlGsz/bf9a83120482501a33a0115ebf83a068/avatar.jpg",
                         width: 1200,
                         height: 630,
                         alt: "Dika Mahendra",

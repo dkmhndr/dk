@@ -25,11 +25,10 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const song = await getSongBySlug(params.slug);
+  const song:any = await getSongBySlug(params.slug);
   if (!song) return {};
   const songUrl = new URL(env.url.website + '/song/' + params.slug);
   // @ts-ignore
-  const imageUrl = new URL(`${env.url.website}${song?.fields?.thumbnail?.fields.file.url || ''}`);
   return {
     ...generateSeoMeta({
       title: song.fields.title as string,
@@ -47,11 +46,7 @@ export async function generateMetadata({
         siteName: 'Dika Mahendra',
         images: [
           {
-            url: `/og/content?title=${encodeURIComponent(
-              song.fields.title as string
-            )}&link=${encodeURIComponent(
-              songUrl.toString()
-            )}&image=${encodeURIComponent(imageUrl.toString())}`,
+            url: `http:${song?.fields?.thumbnail?.fields.file.url || ''}`,
             width: 1200,
             height: 630,
             alt: song.fields.title as string,
