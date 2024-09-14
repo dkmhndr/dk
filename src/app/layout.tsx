@@ -35,6 +35,7 @@ export default function RootLayout({
   config.autoAddCss = false;
   return (
     <html lang='en'>
+      <script defer src="https://umami.dikamahendra.com/script.js" data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID} />
       <head />
       <body className={jakarta.className}>
         <ThemeProvider
